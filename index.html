@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+       
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> Xisaabiyahaaga qaaska ah</title>
+        <script language="javascript">
+            // put this in the <head></head> section
+            window.addEventListener("load", function() { document.getElementById('xisaabi').disabled = false; }, false);
+            </script>
+    <!-- Pyscript -->
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    
+    <!-- bootstrap for styling , Pyscript can also be used for styling instead of bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+    
+    body {
+        background-color: #fcfcfc;
+        padding-top: 55px;
+        min-height: 100vh;
+        margin:0;
+        display:flex;
+        flex-direction:column;
+      }
+    </style>  
+   
+</head>
+<body>
+<!-- write your Python code in py-script tag -->
+
+<py-script>
+
+from js import document,alert
+def persentiga(sav,per):
+    per= (per/100)+1
+   
+    return int(sav)*per   
+
+list_money = []   
+gaarid =1000000;   
+def xisaabi(*ags, **kws):
+    seefka = document.getElementById('seefka').value;
+    per =document.getElementById('persentiga').value;
+    gaarid =document.getElementById('gaarid').value; 
+    result= persentiga(seefka,int(per))
+    
+    start = result
+    num = 1
+
+   
+    
+    while start < int(gaarid): 
+        begin = start
+   
+        num +=1
+        start  +=  persentiga(start,int(per))-start
+        if not  list_money:
+            result =f'marka 1 aad : {start/2}'
+            list_money.append(result)
+
+
+        result =f'marka {num} aad : {start:,} USD'.replace(',', ' ')
+        list_money.append(result)
+        print(list_money)
+    end_result = f'waxee kugu qaadaneesaa {num} jeer : {round(start):,} USD' .replace(',', ' ')
+
+    pyscript.write("kooban",end_result)
+    pyscript.write("faafaahin",list_money)
+
+          
+</py-script>    
+
+    <div class="container">  
+        <h1 class="text-center">
+            Xisaabiyahaaga qaaska ah ee Deeq
+        </h1>
+        <br />
+        <p><h3>fadlan dalabkaaga dhiib:</h3>
+            <label for="fname">inta heesatid:</label>
+        <input id="seefka" type="number" value ="1000"  class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="bilawga lacagta" /></p>
+        <label for="fname">persentiga:</label>
+        <input id="persentiga" type="number" value ="50"  class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="persentiga sheeg" /></p>
+        <label for="fname">inta aad rabto inaad hesho:</label>
+        <input id="gaarid" type="number"  value ="1000000" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="intaad rabtid" /></p>
+       
+        <center>
+            <button id="xisaabi" type="submit"  disabled=true class="btn btn-info" pys-onClick="xisaabi">xisaabi</button>
+
+        </center>
+        
+        <p>
+            <h4>macluumaadka kooban:</h4>
+            <textarea id="kooban" class="form-control" rows="auto" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Macluumaadka kooban"></textarea></p>
+    
+        <h4>Faafaahinta:</h4>
+        <textarea id="faafaahin" class="form-control" rows="auto" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="macluumaadka oo faafahsan"></textarea></p>
+    
+        
+    </div>    
+      <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright by Lamaane:
+  
+  </div>
+  <!-- Copyright -->
+    </body>
+    </html>    
